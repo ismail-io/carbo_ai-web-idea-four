@@ -77,7 +77,7 @@ const Dashboard = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [searchQueries]);
 
   useEffect(() => {
     getNews();

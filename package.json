@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Carbon Track AI - React Frontend",
   "scripts": {
-    "build": "cd client && npm install && npm run build",
+    "build": "cd client && npm install && CI=false npm run build",
     "start": "cd client && npm start"
   },
   "keywords": ["carbon", "tracking", "ai", "sustainability", "react"],

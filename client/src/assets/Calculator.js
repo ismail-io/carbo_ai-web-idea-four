@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Car, Home, Sandwich, ShoppingBag, Droplet, Users, Package, Building, Heart, Info, TreeDeciduous, Flame,Lightbulb } from 'lucide-react';
 import { Alert, AlertDescription } from '../@/components/ui/alert';
 import { Card, CardContent, CardHeader, CardTitle } from '../@/components/ui/card';
@@ -180,7 +180,7 @@ const CarbonFootprintCalculator = () => {
       }
     }
   }, [showResults, categoryEmissions]);
-  const calculateCategoryEmissions = (categoryId) => {
+  const calculateCategoryEmissions = useCallback((categoryId) => {
     const category = categories.find(c => c.id === categoryId);
     if (!category) return 0;
 
@@ -188,7 +188,7 @@ const CarbonFootprintCalculator = () => {
       const value = answers[categoryId]?.[question.id] || 0;
       return acc + (value * question.factor);
     }, 0);
-  };
+  }, [answers]);
 
   useEffect(() => {
     // Calculate emissions for all categories in real-time
